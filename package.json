@@ -1,0 +1,25 @@
+{
+  "name": "tof-cs-rank",
+  "version": "0.0.1",
+  "description": "Extract CS from Image and set Roles",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ToF",
+    "Tower",
+    "of",
+    "fantasy",
+    "OCR",
+    "OpenCV"
+  ],
+  "author": "Mdnpascual",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/rest": "^1.1.0",
+    "discord-api-types": "^0.37.5",
+    "discord.js": "^14.3.0",
+    "mongodb": "4.9"
+  }
+}

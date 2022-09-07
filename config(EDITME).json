@@ -1,0 +1,7 @@
+{
+	"clientId": "BOT_CLIENT_ID",
+	"guildId": "GUILD_ID",
+	"token": "BOT_TOKEN",
+	"mongoDBPassword": "DB_PASSWORD",
+	"mongoDBURI": "DB_STRING_CONNECTION"
+}
