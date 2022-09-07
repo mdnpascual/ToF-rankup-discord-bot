@@ -403,11 +403,6 @@ function featureDetection(url, interaction){
 }
 
 function getIndex(width, height){
-	// EXCEPTIONS
-	if (width == 2360 && height == 1640){
-		return 2;
-	}
-
 	// Match Nearest height first, then match nearest Width
 	var matchedHeight = heights.sort((a, b) => {
 		return Math.abs(a - height) - Math.abs(b - height);
@@ -418,16 +413,6 @@ function getIndex(width, height){
 		return Math.abs(a - width) - Math.abs(b - width);
 	})[0];
 	return resolutions.findIndex((elem) => {if (elem.w == matchedWidth && elem.h == matchedHeight) return true})
-
-	// var matchedWidth = widths.sort((a, b) => {
-	// 	return Math.abs(a - width) - Math.abs(b - width);
-	// })[0];
-	// var possibleResolutions = resolutions.filter((item) => {if (item.w === matchedWidth) return true})
-	// var extractedHeights = possibleResolutions.map((elem)=>(elem.h));
-	// var matchedHeight = extractedHeights.sort((a, b) => {
-	// 	return Math.abs(a - height) - Math.abs(b - height);
-	// })[0];
-	// return resolutions.findIndex((elem) => {if (elem.w == matchedWidth && elem.h == matchedHeight) return true})
 }
 
 function padTime(n){
