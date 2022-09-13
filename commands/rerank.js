@@ -19,7 +19,7 @@ module.exports = {
 
 		var fields = [];
 		for (const user of users){
-			var field = await updateRoles(user.CS, user.discord_tag, sortedRankingCutoff, interaction)
+			var field = await updateRoles(DbClient, user.CS, user.discord_tag, guild_id, sortedRankingCutoff, interaction)
 			if (field !== null){
 				fields.push(field);
 			}
@@ -77,11 +77,37 @@ async function getRankingCutoffs(DbClient, guild_id){
 	} finally { }
 }
 
-async function updateRoles(score, tag, rankingCutoff, interaction) {
+async function removeUser(DbClient, tag, guild_id)
+{
+	try{
+		const database = DbClient.db('ToF-RankUp-DB');
+		const records = database.collection('records');
+
+		const query = { discord_tag: tag, guild_id: guild_id }
+		const userRecord = await records.deleteOne(query);
+
+		return userRecord;
+	} catch (error) {
+		console.error(error);
+	} finally { }
+}
+
+async function updateRoles(DbClient, score, tag, guild_id, rankingCutoff, interaction) {
 	var user = await interaction.guild.members.fetch({query: tag.split("#")[0], limit: 1, force: true});
 	user = user.first();
 
-	var userRoles = user.roles.cache;
+	try{
+		var userRoles = user.roles.cache;
+	} catch (exception){
+		// DELETE
+		await removeUser(DbClient, tag, guild_id);
+
+		return additionalMessage == "" ? null : {
+			name: tag,
+			value: "User not found. Deleting in leaderboards",
+			inline: false
+		}
+	}
 
 	var rankList = rankingCutoff.map((rank) => rank.min_cs);
 	var rankListindexFound = rankList.findIndex(rankScore => score >= rankScore);

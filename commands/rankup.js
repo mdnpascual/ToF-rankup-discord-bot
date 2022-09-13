@@ -318,7 +318,7 @@ function templateMatching(mat, scaleIndex, digit, interaction){
 	// Read Digit Template
 	file = "./templates/" + digit + ".jpg";
 	var template = cv.imread(file);
-	template = template.rescale(resolutions[scaleIndex].scale);
+	template = template.rescale(resolutions[scaleIndex].textScale);
 
 	var result = mat.matchTemplate(template, 5);
 	const dataList = result.getDataAsArray();
