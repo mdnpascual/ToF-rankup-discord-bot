@@ -587,9 +587,16 @@ var resolutions = [
 		"scale": 0.61,
 		"textScale": 0.61,
 	},
+	{
+		"w": 2880,
+		"h": 1800,
+		"scale": 0.75,
+		"textScale": 0.75,
+	},
 ]
 
 var widths = [3840,
+2880,
 2560,
 2360,
 2048,
@@ -603,6 +610,7 @@ var widths = [3840,
 1080,]
 
 var heights = [2160,
+1800,
 1640,
 1600,
 1440,

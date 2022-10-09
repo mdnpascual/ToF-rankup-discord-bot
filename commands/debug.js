@@ -80,10 +80,10 @@ async function mainDetect(url, interaction){
 		const { maxLoc: { x, y }, maxVal: yResult } = minMax;
 
 		// Check if GS Icon is found
-		if (yResult < 0.55){
+		if (yResult < 0.55){ // 0.55
 			try{
 				await interaction.editReply({
-					content: "Unable to read CS Score",
+					content: "Unable to read CS Score. Detection Score: " + yResult,
 					ephemeral: privateMessages
 				});
 			} catch (error) {
@@ -453,9 +453,16 @@ var resolutions = [
 		"scale": 0.61,
 		"textScale": 0.61,
 	},
+	{
+		"w": 2880,
+		"h": 1800,
+		"scale": 0.75,
+		"textScale": 0.75,
+	},
 ]
 
 var widths = [3840,
+2880,
 2560,
 2360,
 2048,
@@ -469,6 +476,7 @@ var widths = [3840,
 1080,]
 
 var heights = [2160,
+1800,
 1640,
 1600,
 1440,
